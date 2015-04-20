@@ -1,0 +1,329 @@
+BODY {
+	FONT-SIZE: 12px;
+	COLOR: #000;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	margin: 0px;
+	padding: 0px;
+	
+	background-image: url(../images/abg2.jpg);
+	background-repeat: repeat;
+	background-attachment: scroll;
+	background-position: 0% 0%;
+	
+	text-align: left;
+	vertical-align: super;
+
+       
+	/*filter:blue;*/ 
+	
+}
+ul, li, p{
+ margin: 0;
+ padding: 0;
+}
+ul{
+ list-style-type:none;
+}
+.style_red {color:#FF0000}
+
+
+
+A:link {
+	COLOR: #333333;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+	line-height: 20px;
+}
+A:visited {
+	COLOR: #333333;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: none;
+}
+.writefont12 {
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+A:hover {
+	COLOR: #f60;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	text-decoration: underline;
+}
+a:active {
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #990000;
+	text-decoration: none;
+}
+INPUT {border:1px solid #A5ACB2;background-color:#ffffff;FONT-SIZE: 12px}
+
+A.white:link {
+	COLOR: #FFFFFF;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 30px;
+
+}
+A.white:visited {
+	COLOR: #FFFFFF;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 30px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.white:active {
+	COLOR: #99FF00;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 30px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.white:hover {
+	COLOR: #FFFF00;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 30px;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.red:link {
+	COLOR: #990000;
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.red:visited {
+	COLOR: #CC0000;
+	FONT-SIZE: 12px;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.red:active {
+	COLOR: #990000;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.red:hover {
+	COLOR: #9900CC;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: underline;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.green:link {
+	COLOR: #006600;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.green:visited {
+	COLOR: #006600;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.green:active {
+	COLOR: #990000;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.green:hover {
+	COLOR: #9900CC;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: underline;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.blue:link {
+	COLOR: #0988AB;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.blue:visited {
+	COLOR: #0988AB;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.blue:active {
+	COLOR: #990000;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.blue:hover {
+	COLOR: #FF9900;
+	FONT-SIZE: 14px;
+	TEXT-DECORATION: underline;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.cofe:link {
+	COLOR: #CE6663;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体", "Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.cofe:visited {
+	COLOR: #CE6663;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.cofe:active {
+	COLOR: #990000;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: none;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+A.cofe:hover {
+	COLOR: #FF9900;
+	FONT-SIZE: 12px;
+	TEXT-DECORATION: underline;
+	FONT-FAMILY: "宋体","Arial", "Helvetica", "sans-serif";
+	font-style: normal;
+	line-height: 20px;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+}
+.error_div{color:#FF0000;}
+
+.list1 {
+	margin: 0px;
+	padding: 15px;
+	line-height: 20px;
+}
+
