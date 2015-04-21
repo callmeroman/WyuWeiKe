@@ -13,6 +13,7 @@ public class Media {
 	private int media_polls;
 	private String media_uploadtime ;
 	private String media_picture;
+	private String user_id;
 	public Media() {
 		super();
 	}
@@ -20,7 +21,7 @@ public class Media {
 			String media_native, String media_way, String media_describe,
 			String media_path, int media_playfrequency,
 			int media_sharefrequency, int media_polls, String media_uploadtime,
-			String media_picture) {
+			String media_picture, String user_id) {
 		super();
 		this.id = id;
 		this.media_name = media_name;
@@ -34,6 +35,7 @@ public class Media {
 		this.media_polls = media_polls;
 		this.media_uploadtime = media_uploadtime;
 		this.media_picture = media_picture;
+		this.user_id = user_id;
 	}
 	public int getId() {
 		return id;
@@ -41,82 +43,90 @@ public class Media {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getmedia_name() {
+	public String getMedia_name() {
 		return media_name;
 	}
-	public void setmedia_name(String media_name) {
+	public void setMedia_name(String media_name) {
 		this.media_name = media_name;
 	}
-	public String getmedia_type() {
+	public String getMedia_type() {
 		return media_type;
 	}
-	public void setmedia_type(String media_type) {
+	public void setMedia_type(String media_type) {
 		this.media_type = media_type;
 	}
-	public String getmedia_native() {
+	public String getMedia_native() {
 		return media_native;
 	}
-	public void setmedia_native(String media_native) {
+	public void setMedia_native(String media_native) {
 		this.media_native = media_native;
 	}
-	public String getmedia_way() {
+	public String getMedia_way() {
 		return media_way;
 	}
-	public void setmedia_way(String media_way) {
+	public void setMedia_way(String media_way) {
 		this.media_way = media_way;
 	}
-	public String getmedia_describe() {
+	public String getMedia_describe() {
 		return media_describe;
 	}
-	public void setmedia_describe(String media_describe) {
+	public void setMedia_describe(String media_describe) {
 		this.media_describe = media_describe;
 	}
-	public String getmedia_path() {
+	public String getMedia_path() {
 		return media_path;
 	}
-	public void setmedia_path(String media_path) {
+	public void setMedia_path(String media_path) {
 		this.media_path = media_path;
 	}
-	public int getmedia_playfrequency() {
+	public int getMedia_playfrequency() {
 		return media_playfrequency;
 	}
-	public void setmedia_playfrequency(int media_playfrequency) {
+	public void setMedia_playfrequency(int media_playfrequency) {
 		this.media_playfrequency = media_playfrequency;
 	}
-	public int getmedia_sharefrequency() {
+	public int getMedia_sharefrequency() {
 		return media_sharefrequency;
 	}
-	public void setmedia_sharefrequency(int media_sharefrequency) {
+	public void setMedia_sharefrequency(int media_sharefrequency) {
 		this.media_sharefrequency = media_sharefrequency;
 	}
-	public int getmedia_polls() {
+	public int getMedia_polls() {
 		return media_polls;
 	}
-	public void setmedia_polls(int media_polls) {
+	public void setMedia_polls(int media_polls) {
 		this.media_polls = media_polls;
 	}
-	public String getmedia_uploadtime() {
+	public String getMedia_uploadtime() {
 		return media_uploadtime;
 	}
-	public void setmedia_uploadtime(String media_uploadtime) {
+	public void setMedia_uploadtime(String media_uploadtime) {
 		this.media_uploadtime = media_uploadtime;
 	}
-	public String getmedia_picture() {
+	public String getMedia_picture() {
 		return media_picture;
 	}
-	public void setmedia_picture(String media_picture) {
+	public void setMedia_picture(String media_picture) {
 		this.media_picture = media_picture;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 	@Override
 	public String toString() {
-		return "media [id=" + id + ", media_name=" + media_name
+		return "Media [id=" + id + ", media_name=" + media_name
 				+ ", media_type=" + media_type + ", media_native="
 				+ media_native + ", media_way=" + media_way
 				+ ", media_describe=" + media_describe + ", media_path="
 				+ media_path + ", media_playfrequency=" + media_playfrequency
 				+ ", media_sharefrequency=" + media_sharefrequency
 				+ ", media_polls=" + media_polls + ", media_uploadtime="
-				+ media_uploadtime + ", media_picture=" + media_picture + "]";
+				+ media_uploadtime + ", media_picture=" + media_picture
+				+ ", user_id=" + user_id + "]";
 	}
+	
 	
 }

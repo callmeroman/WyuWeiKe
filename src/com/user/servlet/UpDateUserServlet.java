@@ -51,14 +51,14 @@ public class UpDateUserServlet extends HttpServlet {
 		user.setUser_qq(user_qq);
 		user.setUser_email(user_email);
 		//
-		request.setAttribute(user_id, user_id);
-		request.setAttribute(user_password, user_password);
-		request.setAttribute(user_name, user_name);
-		request.setAttribute(user_sex, user_sex);
-		request.setAttribute(user_academy, user_academy);
-		request.setAttribute(user_phone, user_phone);
-		request.setAttribute(user_qq, user_qq);
-		request.setAttribute(user_email, user_email);
+//		request.setAttribute(user_id, user_id);
+//		request.setAttribute(user_password, user_password);
+//		request.setAttribute(user_name, user_name);
+//		request.setAttribute(user_sex, user_sex);
+//		request.setAttribute(user_academy, user_academy);
+//		request.setAttribute(user_phone, user_phone);
+//		request.setAttribute(user_qq, user_qq);
+//		request.setAttribute(user_email, user_email);
 		
 		userDaoImpl.upUserByid(user);
 		response.sendRedirect("/WyuWeiKe/user/success.jsp");

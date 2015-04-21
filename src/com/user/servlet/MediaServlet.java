@@ -68,9 +68,9 @@ public class MediaServlet extends HttpServlet {
 			System.out.println("fi2.getContentType()="+fi2.getContentType());
 			
 			FileItem fi3=fileItemList.get(2);
-			FileItem fi4=fileItemList.get(3);
-			FileItem fi5=fileItemList.get(4);
-			FileItem fi6=fileItemList.get(5);
+//			FileItem fi4=fileItemList.get(3);
+//			FileItem fi5=fileItemList.get(4);
+//			FileItem fi6=fileItemList.get(5);
 			System.out.println("文件表单项演示：");
 			System.out.println("content-type:"+fi1.getContentType());
 			System.out.println("size:"+fi1.getSize());
@@ -133,29 +133,30 @@ public class MediaServlet extends HttpServlet {
 				String media_type=fi3.getString();
 				System.out.println("media_type="+fi3.getString());
 				
-				String media_native=fi4.getString();
-				System.out.println("media_native="+fi4.getString());
-				
-				String media_way=fi5.getString();
-				System.out.println("media_way="+fi5.getString());
-				
-				String media_describe=fi5.getString();
-				System.out.println("media_describe="+fi5.getString());
-				
-				String media_uploadtime = new Date().toString();//获取当前时间并返回为字符串表示
+//				String media_native=fi4.getString();
+//				System.out.println("media_native="+fi4.getString());
+//				
+//				String media_way=fi5.getString();
+//				System.out.println("media_way="+fi5.getString());
+//				
+//				String media_describe=fi5.getString();
+//				System.out.println("media_describe="+fi5.getString());
+//				
+//				String media_uploadtime = new Date().toString();//获取当前时间并返回为字符串表示
 				
 				Media media=new Media();//创建media对象
-				media.setmedia_path(media_path);
-				media.setmedia_name(media_name);
-				media.setmedia_type(media_type);
-				media.setmedia_native(media_native);
-				media.setmedia_way(media_way);
-				media.setmedia_describe(media_describe);
-				media.setmedia_uploadtime(media_uploadtime);
+				media.setMedia_path(media_path);
+				media.setMedia_name(media_name);
+				media.setMedia_type(media_type);
+//				media.setmedia_native(media_native);
+//				media.setmedia_way(media_way);
+//				media.setmedia_describe(media_describe);
+//				media.setmedia_uploadtime(media_uploadtime);
 				MediaDaoImpl mediaDaoImpl=new MediaDaoImpl();
 				mediaDaoImpl.savemedia1(media);
-				request.setAttribute("savemediamessage", "上传成功");
-				request.getRequestDispatcher("/media/media_upload.jsp").forward(request, response);
+				request.setAttribute("savemediamessage", "上传成功,请完善视频信息");
+				request.setAttribute("media_name", media_name);
+				request.getRequestDispatcher("/media/media_moremessage.jsp").forward(request, response);
 				
 				
 		} catch (FileUploadException e) {

@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
 		user.setUser_phone(user_phone);
 		user.setUser_qq(user_qq);
 		user.setUser_email(user_email);
-		//
+		//将参数存入request中，可通过请求跳转传值
 //		request.setAttribute(user_id, user_id);
 //		request.setAttribute(user_password, user_password);
 //		request.setAttribute(user_name, user_name);

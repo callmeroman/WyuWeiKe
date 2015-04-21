@@ -26,26 +26,33 @@
 <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
 <script type="text/javascript" src="js/tween.js"></script>
 
+<script type="text/javascript" src="../js/jquery.js" charset="utf-8"></script>
+<script type="text/javascript">
+// function hidden(){
+
+// $("#visible:visible").hide();
+// }
+
+</script>
+
 </head>
 
 <body>
-<%
-String message="";
-String msg=(String)request.getAttribute("savemediamessage");
-if(msg!=null){
-message=msg;
-}
- %>
- <%
- 
- 
- 
-  %>
+<%-- <% --%>
+<%-- String message=""; --%>
+<%-- String msg=(String)request.getAttribute("savemediamessage"); --%>
+<%-- if(msg!=null){ --%>
+<%-- message=msg; --%>
+<%-- //$("form:visible").hide(); --%>
+
+<%-- } --%>
+<%--  %> --%>
 	<center>
 					<!-- method="post" 放在enctype="multipart/form-data"的后面 -->
-			<form type="visible" name="frommedia_up"  action="media" enctype="multipart/form-data" method="post" >
+		<fieldset>
+			<legend ><strong>视频上传:</strong></legend>
+			<form  id="visible" name="formmedia_up"  action="media" enctype="multipart/form-data" method="post" onclick="">
 				<table border="1" >
-					<tr><font color="red" ><%=message %></font></tr>
 					<tr>
 						<td><span>选择视频：</span><input type="file" value="浏览"
 							name="media_path" id="media_path">
@@ -66,45 +73,13 @@ message=msg;
 								name="Submit" type="submit" class="bluebuttom" value="上传视频" />
 						</label>
 						</td>
+<!-- 						<td height="52" colspan="4" align="center"> -->
+<!-- 							<label><a href="media_moremessage.jsp">完善视频资料</a></label> -->
+<!-- 						</td> -->
 					</tr>
-					
 				</table>
 		</form>
-			<!-- ----------------------------------------------- -->
-		<form type="hidden" name="frommediamessage_up"  action="mediamessageupload"  method="post" >
-			<table >
-			<tr>
-						<td><span>课程性质：</span> 
-							<select name="media_native"
-							id="media_native">
-								<option value="选修">选修</option>
-								<option value="必修">必修</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><span>参赛方式：</span> <select name="media_way"
-							id="media_way">
-								<option value="个人参赛">个人参赛</option>
-								<option value="学院参赛">学院参赛</option>
-						</select></td>
-					</tr>
-					<tr>
-						<td><span>简介：</span>
-						</td>
-					</tr>
-					<tr>
-						<td><textarea rows="10" cols="30" name="media_describe"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td height="52" colspan="4" align="center"><label><input
-								name="Submit" type="submit" class="bluebuttom" value="提交信息" />
-						</label>
-						</td>
-					</tr>
-			</table>
-	</form>
+	</fieldset>	
 			</center>
 </body>
 </html>

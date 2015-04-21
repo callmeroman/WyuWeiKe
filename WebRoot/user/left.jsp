@@ -43,9 +43,7 @@ function getusermessage(){
 
 </head>
   
-					<input type="hidden" id=sess name="hiddenField" value=<%=session.getAttribute("user")%>>
-  
-  
+<input type="hidden" id=sess name="hiddenField" value=<%=session.getAttribute("user")%>>
   
   <body>
  <table width="154" border="0" cellpadding="0" cellspacing="0">

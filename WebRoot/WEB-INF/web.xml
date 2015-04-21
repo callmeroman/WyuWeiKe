@@ -106,7 +106,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>MediaMessageUploadServlet</servlet-name>
-    <url-pattern>/smediamessageupload</url-pattern>
+    <url-pattern>/mediamessageupload</url-pattern>
   </servlet-mapping>
   
   

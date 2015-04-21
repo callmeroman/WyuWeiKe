@@ -25,16 +25,16 @@ public class MediaDaoImpl implements IMediaDao {
 		int result = 0;
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, media.getmedia_name());
-			ps.setString(2, media.getmedia_type());
-			ps.setString(3, media.getmedia_native());
-			ps.setString(4, media.getmedia_way());
-			ps.setString(5, media.getmedia_describe());
-			ps.setString(6, media.getmedia_path());
+			ps.setString(1, media.getMedia_name());
+			ps.setString(2, media.getMedia_type());
+			ps.setString(3, media.getMedia_native());
+			ps.setString(4, media.getMedia_way());
+			ps.setString(5, media.getMedia_describe());
+			ps.setString(6, media.getMedia_path());
 //			ps.setInt(7, media.getmedia_playfrequency());
 //			ps.setInt(8, media.getmedia_sharefrequency());
 //			ps.setInt(9, media.getmedia_polls());
-			ps.setString(7, media.getmedia_uploadtime());
+			ps.setString(7, media.getMedia_uploadtime());
 //			ps.setString(11, media.getmedia_picture());
 			result = ps.executeUpdate();
 
@@ -68,17 +68,17 @@ return false;
 			
 			while(rs.next()){
 				media =new Media();
-				media.setmedia_name(rs.getString(1));
-				media.setmedia_type(rs.getString(2));
-				media.setmedia_native(rs.getString(3));
-				media.setmedia_way(rs.getString(4));
-				media.setmedia_describe(rs.getString(5));
-				media.setmedia_path(rs.getString(6));
-				media.setmedia_playfrequency(rs.getInt(7));
-				media.setmedia_sharefrequency(rs.getInt(8));
-				media.setmedia_polls(rs.getInt(9));
-				media.setmedia_uploadtime(rs.getString(10));
-				media.setmedia_picture(rs.getString(11));
+				media.setMedia_name(rs.getString(1));
+				media.setMedia_type(rs.getString(2));
+				media.setMedia_native(rs.getString(3));
+				media.setMedia_way(rs.getString(4));
+				media.setMedia_describe(rs.getString(5));
+				media.setMedia_path(rs.getString(6));
+				media.setMedia_playfrequency(rs.getInt(7));
+				media.setMedia_sharefrequency(rs.getInt(8));
+				media.setMedia_polls(rs.getInt(9));
+				media.setMedia_uploadtime(rs.getString(10));
+				media.setMedia_picture(rs.getString(11));
 				
 			}
 
@@ -171,6 +171,37 @@ return false;
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public boolean savemediamessage(Media media,int id) {
+		// (1)获取连接
+		Connection conn = JdbcUtil.getConn();
+		// (2)声明相关对象
+		PreparedStatement ps = null;
+		// (3)编写SQL
+		String sql = "update media set media_name=?,media_native=?,media_way=?,media_describe=?,media_uploadtime=?,user_id=? where id="+id+" ;";
+		int result = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, media.getMedia_name());
+			ps.setString(2, media.getMedia_native());
+			ps.setString(3, media.getMedia_way());
+			ps.setString(4, media.getMedia_describe());
+			ps.setString(5, media.getMedia_uploadtime());
+			ps.setString(6, media.getUser_id());
+			result = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(null,ps, conn);
+		}
+		if (result == 1) {
+			return true;
+		}
+
+return false;
+	}
+
 
 
 }
