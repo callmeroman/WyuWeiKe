@@ -2,6 +2,7 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+System.out.println("调用media_moremessage.jsp");
 System.out.println("request.getParameter('media_name'))="+request.getParameter("media_name"));
 System.out.println("request.getAttribute('media_name'))="+request.getAttribute("media_name"));
 System.out.println("request.getAttribute('savemediamessage')="+request.getAttribute("savemediamessage"));
@@ -28,30 +29,31 @@ System.out.println("request.getAttribute('savemediamessage')="+request.getAttrib
   
   <body>
  <%
-String message="";
+String savemediamessage="";
 String message2 =(String)request.getAttribute("savemediamessage");
 if(message2!=null){
-message=message2;
+savemediamessage=message2;
 }
 
-String moremessage="";//赋值为空，第一次打开页面无显示，否则显示null；
+String media_name="";//赋值为空，第一次打开页面无显示，否则显示null；
 	String msg=(String)request.getAttribute("media_name");
 	if(msg!=null){
-	moremessage=msg;
+	media_name=msg;
 	}
  %>
 <!-- ----------------------------------------------- -->
 <form name="formmediamessage_up"  action="mediamessageupload"  method="post" >
 	<table >
-		<tr><font color="red" ><%=message %></font></tr>
-		<tr>
-			<td><span>视频标题：</span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="red" > <%=moremessage %></font></td>
-		</tr>
 		<tr>
 			<td>
-				亲爱的，<input type="text" value="${sessionScope.user.user_id }" disabled="disabled"/>
+				<!-- style="display: none"隐藏input，只做传值 -->
+				<input name="user_id" type="text" value="${sessionScope.user.user_id }" style="display: none"/>
 			</td>
 		</tr>
+		<tr>
+			<td><input type="text" name="media_name"  value="<%=media_name %>" style="display: none;"/></td>
+		</tr>
+		<tr><font color="red" ><%=savemediamessage %></font></tr>
 		<tr>
 			<td><span>课程性质：</span> 
 				<select name="media_native" id="media_native">

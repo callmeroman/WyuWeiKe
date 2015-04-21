@@ -172,13 +172,13 @@ return false;
 		return null;
 	}
 
-	public boolean savemediamessage(Media media,int id) {
+	public boolean savemediamessage(Media media,String media_name) {
 		// (1)获取连接
 		Connection conn = JdbcUtil.getConn();
 		// (2)声明相关对象
 		PreparedStatement ps = null;
 		// (3)编写SQL
-		String sql = "update media set media_name=?,media_native=?,media_way=?,media_describe=?,media_uploadtime=?,user_id=? where id="+id+" ;";
+		String sql = "update media set media_name=?,media_native=?,media_way=?,media_describe=?,media_uploadtime=?,user_id=? where media_name='"+media_name+"' ;";
 		int result = 0;
 		try {
 			ps = conn.prepareStatement(sql);

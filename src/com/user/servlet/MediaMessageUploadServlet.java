@@ -26,22 +26,28 @@ public class MediaMessageUploadServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("调用MediaMessageUploadServlet完善上传视频信息");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		String  id2 =request.getParameter("id");
-		int id = Integer.parseInt(id2);
+		//从form表单中提取数据
 		String  media_name =request.getParameter("media_name");
 		String  media_native =request.getParameter("media_native");
-		String media_way  =request.getParameter("media_way");
+		String media_way =request.getParameter("media_way");
 		String  media_describe =request.getParameter("media_describe");
 		String media_uploadtime=new Date().toString();
-//		String user_id=request.getParameter("user_id");
+		
 		/*
 		 * 从session中获取对象user，再从对象中获得user_id的值
 		 * */
-		HttpSession session =request.getSession();
+		HttpSession session =request.getSession();//user_id保存在session的user对象中
 		User user = (User)session.getAttribute("user");//getAttribute返回为一个对象
 		String user_id=user.getUser_id();//getUser_id()从user对象中获取值
+		
+		System.out.println("media_name="+media_name);
+		System.out.println("media_native="+media_native);
+		System.out.println("media_way="+media_way);
+		System.out.println("media_describe="+media_describe);
+		System.out.println("media_uploadtime="+media_uploadtime);
 		System.out.println("user_id="+user_id);
 		
 		Media media=new Media();
@@ -53,7 +59,7 @@ public class MediaMessageUploadServlet extends HttpServlet {
 		media.setUser_id(user_id);
 		
 		MediaDaoImpl mediaDaoImpl=new MediaDaoImpl();
-		mediaDaoImpl.savemediamessage(media,id);
+		mediaDaoImpl.savemediamessage(media,media_name);//media_name为sql语句中where media_name=？的值
 		request.setAttribute("success", "恭喜，完成视频上传！");
 		request.getRequestDispatcher("/WyuWeiKe/success.jsp");
 

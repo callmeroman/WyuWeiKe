@@ -37,6 +37,7 @@ public class MediaServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("调用MediaServlet上传视频");
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -128,8 +129,12 @@ public class MediaServlet extends HttpServlet {
 			fi1.write(destFile);//选择异常Add catch clause to surrounding try？？？
 			*/
 			
+				String media_uploadtime = new Date().toString();//获取当前时间并返回为字符串表示
 				String media_path=dirFile.toString();//toString()返回对象的字符串表示
-				String media_name=fi2.getString();//
+				
+				String media_name2=fi2.getString();//解决上传文件同名问题，可在name后面加个date()
+				String media_name=media_name2+media_uploadtime;
+				
 				String media_type=fi3.getString();
 				System.out.println("media_type="+fi3.getString());
 				
@@ -142,7 +147,6 @@ public class MediaServlet extends HttpServlet {
 //				String media_describe=fi5.getString();
 //				System.out.println("media_describe="+fi5.getString());
 //				
-//				String media_uploadtime = new Date().toString();//获取当前时间并返回为字符串表示
 				
 				Media media=new Media();//创建media对象
 				media.setMedia_path(media_path);

@@ -7,7 +7,7 @@ import com.user.bean.Media;
 public interface IMediaDao {
 	
 	public boolean savemedia1(Media media);//上传视频
-	public boolean savemediamessage(Media media,int id);//完善视频信息
+	public boolean savemediamessage(Media media,String media_name);//完善视频信息
 	public Media getmediaByid(int id);
 	public Media upmediaByid();
 	    /**
