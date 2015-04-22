@@ -48,8 +48,8 @@
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>MediaServlet</servlet-name>
-    <servlet-class>com.user.servlet.MediaServlet</servlet-class>
+    <servlet-name>MediaUploadServlet</servlet-name>
+    <servlet-class>com.user.servlet.MediaUploadServlet</servlet-class>
   </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
@@ -63,6 +63,13 @@
     <servlet-name>MediaMessageUploadServlet</servlet-name>
     <servlet-class>com.user.servlet.MediaMessageUploadServlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowUserMediaServlet</servlet-name>
+    <servlet-class>com.user.servlet.ShowUserMediaServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -97,8 +104,8 @@
   <url-pattern>/updateuser</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>MediaServlet</servlet-name>
-    <url-pattern>/media</url-pattern>
+    <servlet-name>MediaUploadServlet</servlet-name>
+    <url-pattern>/mediaupload</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
@@ -107,6 +114,10 @@
   <servlet-mapping>
     <servlet-name>MediaMessageUploadServlet</servlet-name>
     <url-pattern>/mediamessageupload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowUserMediaServlet</servlet-name>
+    <url-pattern>/showusermedia</url-pattern>
   </servlet-mapping>
   
   

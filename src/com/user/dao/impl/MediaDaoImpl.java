@@ -7,12 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+
 import com.user.bean.Media;
+import com.user.bean.User;
 import com.user.dao.IMediaDao;
+import com.user.util.DBCPUtil;
 import com.user.util.JdbcUtil;
 
 public class MediaDaoImpl implements IMediaDao {
-
+	private QueryRunner qr=new QueryRunner(DBCPUtil.getDataSource());
 	public boolean savemedia1(Media media) {
 		// (1)获取连接
 		Connection conn = JdbcUtil.getConn();
@@ -20,8 +25,8 @@ public class MediaDaoImpl implements IMediaDao {
 		PreparedStatement ps = null;
 		// (3)编写SQL
 		String sql = "insert into media(media_name,media_type,media_native," +
-				"media_way,media_describe,media_path,media_uploadtime) values"
-				+ "(?,?,?,?,?,?,?)";
+				"media_way,media_describe,media_path,media_uploadtime,media_picturepath) values"
+				+ "(?,?,?,?,?,?,?,?)";
 		int result = 0;
 		try {
 			ps = conn.prepareStatement(sql);
@@ -31,10 +36,10 @@ public class MediaDaoImpl implements IMediaDao {
 			ps.setString(4, media.getMedia_way());
 			ps.setString(5, media.getMedia_describe());
 			ps.setString(6, media.getMedia_path());
-//			ps.setInt(7, media.getmedia_playfrequency());
 //			ps.setInt(8, media.getmedia_sharefrequency());
 //			ps.setInt(9, media.getmedia_polls());
 			ps.setString(7, media.getMedia_uploadtime());
+			ps.setString(8, media.getMedia_picturepath());
 //			ps.setString(11, media.getmedia_picture());
 			result = ps.executeUpdate();
 
@@ -50,44 +55,57 @@ public class MediaDaoImpl implements IMediaDao {
 return false;
 }
 
-	public Media getmediaByid(int id) {
-		// (1)获取连接
-		Connection conn = JdbcUtil.getConn();
-		// (2)声明相关对象
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		// (3)编写SQL
-		String sql = "select * from myuser where id=?";
-		int result = 0;
-		Media media = null;
+	public List<Media> getmediaByUser_id(String user_id) {
+//		// (1)获取连接
+//		Connection conn = JdbcUtil.getConn();
+//		// (2)声明相关对象
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		// (3)编写SQL
+//		String sql = "select * from media where user_id='"+user_id+"';";
+//		int result = 0;
+//		Media media = null;
+//		try {
+//			ps = conn.prepareStatement(sql);
+////			ps.setInt(1,id);
+//
+//			rs = ps.executeQuery();
+//			
+//			while(rs.next()){
+//				media =new Media();
+//				media.setId(rs.getInt(1));
+//				media.setMedia_name(rs.getString(2));
+//				media.setMedia_type(rs.getString(3));
+//				media.setMedia_native(rs.getString(4));
+//				media.setMedia_way(rs.getString(5));
+//				media.setMedia_describe(rs.getString(6));
+//				media.setMedia_path(rs.getString(7));
+//				media.setMedia_picturepath(rs.getString(8));
+//				media.setMedia_playfrequency(rs.getInt(9));
+//				media.setMedia_sharefrequency(rs.getInt(10));
+//				media.setMedia_polls(rs.getInt(11));
+//				media.setMedia_uploadtime(rs.getString(12));
+//				media.setUser_id(rs.getString(13));
+//				
+//			}
+//
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			JdbcUtil.close(rs,ps, conn);
+//		}
+//		return media;
+		String sql = "select * from media where user_id='"+user_id+"';";
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1,id);
-
-			rs = ps.executeQuery();
-			
-			while(rs.next()){
-				media =new Media();
-				media.setMedia_name(rs.getString(1));
-				media.setMedia_type(rs.getString(2));
-				media.setMedia_native(rs.getString(3));
-				media.setMedia_way(rs.getString(4));
-				media.setMedia_describe(rs.getString(5));
-				media.setMedia_path(rs.getString(6));
-				media.setMedia_playfrequency(rs.getInt(7));
-				media.setMedia_sharefrequency(rs.getInt(8));
-				media.setMedia_polls(rs.getInt(9));
-				media.setMedia_uploadtime(rs.getString(10));
-				media.setMedia_picture(rs.getString(11));
-				
-			}
-
+			return qr.query(sql, new BeanListHandler<Media>(Media.class));
 		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JdbcUtil.close(rs,ps, conn);
+			throw new RuntimeException(e);
 		}
-		return media;
+
+		
+		
+		
+		
 	}
 
 	public Media upmediaByid() {
@@ -167,15 +185,30 @@ return false;
 		return null;
 	}
 
-	public Media querymediaById(int id) throws Exception {
-		// TODO Auto-generated method stub
+	public Media querymediaByUser_id(int user_id) throws Exception {
+//		//获取链接
+//		Connection connection=JdbcUtil.getConn();
+//		//声明相关对象
+//		PreparedStatement ps=null;
+//		//编写sql语句
+////		String sql="select * from myuser inner join media on myuser.user_id=media.user_id";//跨表查询
+//		String sql="select * from media where user_id='"+user_id+"';";
+//		int result = 0;
+//		try {
+//			ps=connection.prepareStatement(sql);
+//			ps.ge
+//			
+//			
+//		} catch (Exception e) {
+//			
+//		}
 		return null;
 	}
 
 	public boolean savemediamessage(Media media,String media_name) {
 		// (1)获取连接
 		Connection conn = JdbcUtil.getConn();
-		// (2)声明相关对象
+		// (2)声明相关对象。PreparedStatement 实例包含已编译的 SQL 语句。这就是使语句“准备好”。
 		PreparedStatement ps = null;
 		// (3)编写SQL
 		String sql = "update media set media_name=?,media_native=?,media_way=?,media_describe=?,media_uploadtime=?,user_id=? where media_name='"+media_name+"' ;";

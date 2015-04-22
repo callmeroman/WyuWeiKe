@@ -27,35 +27,27 @@
 <script type="text/javascript" src="js/tween.js"></script>
 
 <script type="text/javascript" src="../js/jquery.js" charset="utf-8"></script>
-<script type="text/javascript">
-// function hidden(){
-
-// $("#visible:visible").hide();
-// }
-
-</script>
 
 </head>
 
 <body>
-<%-- <% --%>
-<%-- String message=""; --%>
-<%-- String msg=(String)request.getAttribute("savemediamessage"); --%>
-<%-- if(msg!=null){ --%>
-<%-- message=msg; --%>
-<%-- //$("form:visible").hide(); --%>
-
-<%-- } --%>
-<%--  %> --%>
 	<center>
 					<!-- method="post" 放在enctype="multipart/form-data"的后面 -->
 		<fieldset>
 			<legend ><strong>视频上传:</strong></legend>
-			<form  id="visible" name="formmedia_up"  action="media" enctype="multipart/form-data" method="post" onclick="">
+			<form  id="visible" name="formmedia_up"  action="mediaupload" enctype="multipart/form-data" method="post" onclick="">
 				<table border="1" >
 					<tr>
-						<td><span>选择视频：</span><input type="file" value="浏览"
+						<td><span>选择视频：</span><input type="file" value="选择视频"
 							name="media_path" id="media_path">
+						</td>
+					</tr>
+					<tr>
+						<td><span>选择图片：</span><input type="file" value="选择图片"
+							name="media_picturepath" id="media_picturepath">
+						</td>
+						<td>
+						<div><font color="red">*请先截取视频图片，再上传。本图片用于视频展示</font></div>
 						</td>
 					</tr>
 					<tr>
@@ -73,9 +65,6 @@
 								name="Submit" type="submit" class="bluebuttom" value="上传视频" />
 						</label>
 						</td>
-<!-- 						<td height="52" colspan="4" align="center"> -->
-<!-- 							<label><a href="media_moremessage.jsp">完善视频资料</a></label> -->
-<!-- 						</td> -->
 					</tr>
 				</table>
 		</form>

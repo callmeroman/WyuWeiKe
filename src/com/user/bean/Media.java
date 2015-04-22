@@ -12,7 +12,7 @@ public class Media {
 	private int media_sharefrequency;
 	private int media_polls;
 	private String media_uploadtime ;
-	private String media_picture;
+	private String media_picturepath;
 	private String user_id;
 	public Media() {
 		super();
@@ -21,7 +21,7 @@ public class Media {
 			String media_native, String media_way, String media_describe,
 			String media_path, int media_playfrequency,
 			int media_sharefrequency, int media_polls, String media_uploadtime,
-			String media_picture, String user_id) {
+			String media_picturepath, String user_id) {
 		super();
 		this.id = id;
 		this.media_name = media_name;
@@ -34,7 +34,7 @@ public class Media {
 		this.media_sharefrequency = media_sharefrequency;
 		this.media_polls = media_polls;
 		this.media_uploadtime = media_uploadtime;
-		this.media_picture = media_picture;
+		this.media_picturepath = media_picturepath;
 		this.user_id = user_id;
 	}
 	public int getId() {
@@ -103,11 +103,11 @@ public class Media {
 	public void setMedia_uploadtime(String media_uploadtime) {
 		this.media_uploadtime = media_uploadtime;
 	}
-	public String getMedia_picture() {
-		return media_picture;
+	public String getMedia_picturepath() {
+		return media_picturepath;
 	}
-	public void setMedia_picture(String media_picture) {
-		this.media_picture = media_picture;
+	public void setMedia_picturepath(String media_picturepath) {
+		this.media_picturepath = media_picturepath;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -124,9 +124,10 @@ public class Media {
 				+ media_path + ", media_playfrequency=" + media_playfrequency
 				+ ", media_sharefrequency=" + media_sharefrequency
 				+ ", media_polls=" + media_polls + ", media_uploadtime="
-				+ media_uploadtime + ", media_picture=" + media_picture
+				+ media_uploadtime + ", media_picturepath=" + media_picturepath
 				+ ", user_id=" + user_id + "]";
 	}
+	
 	
 	
 }

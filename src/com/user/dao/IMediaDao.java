@@ -8,7 +8,7 @@ public interface IMediaDao {
 	
 	public boolean savemedia1(Media media);//上传视频
 	public boolean savemediamessage(Media media,String media_name);//完善视频信息
-	public Media getmediaByid(int id);
+	public List<Media> getmediaByUser_id(String user_id);//输出登录用户本人所有media
 	public Media upmediaByid();
 	    /**
 	     * 视频转码
@@ -45,11 +45,11 @@ public interface IMediaDao {
 	    public List<Media> queryALlmedia(int firstResult, int maxResult)throws Exception;
 	    
 	    /**
-	     * 根据Id查询视频
+	     * 根据user_id查询视频
 	     * @param id
 	     * @return
 	     * @throws Exception
 	     */
-	    public Media querymediaById(int id)throws Exception;
+	    public Media querymediaByUser_id(int user_id)throws Exception;
 
 }

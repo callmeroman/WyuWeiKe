@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <center>
-<form id="form" name="form" method="post" action="<%=path %>/updateuser" > 
+<form id="form" name="form" method="post" action="showuser" > 
      <table>
 					<tr>
 						<td align="left"><span class="error_div">*</span>教工号：</td>

@@ -34,7 +34,7 @@ public class ShowUserServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		
-		String id=request.getParameter("user_id");
+		String user_id=request.getParameter("user_id");
 //		String password=request.getParameter("user_password");
 //		//拿到session中的值
 //		HttpSession session=request.getSession();
@@ -46,7 +46,7 @@ public class ShowUserServlet extends HttpServlet {
 //		System.out.println("user_id="+id2);
 //		System.out.println("user_password="+password2);
 		
-		User user=dao.getUserByUser_id(id);
+		User user=dao.getUserByUser_id(user_id);
 //		System.out.println(user);
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/user/usermessage.jsp").forward(request, response);

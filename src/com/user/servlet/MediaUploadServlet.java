@@ -23,11 +23,11 @@ import com.user.dao.impl.MediaDaoImpl;
 
 
 
-public class MediaServlet extends HttpServlet {
+public class MediaUploadServlet extends HttpServlet {
 
 
 
-	public MediaServlet() {
+	public MediaUploadServlet() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public class MediaServlet extends HttpServlet {
 		/////////////////////////////////////////////////////////
 		//格式化时间
 		Date date=new Date();
-		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日HH时mm分");
 		String media_uploadtime=date1.format(date);
 //		String media_uploadtime = (String)date.//获取当前时间并返回为字符串表示
 		/////////////////////////////////////////////////////////
@@ -63,30 +63,26 @@ public class MediaServlet extends HttpServlet {
 		 * 4.遍历FileItem集合，调用API完成文件保存
 		 * **/
 		DiskFileItemFactory factory=new DiskFileItemFactory(20*1024,new File("D:/f/temp"));//得到工厂,缓存大小20*1024，临时目录F:/f/temp提前建好,文件大于20k则保存到临时目录
-
 		ServletFileUpload sfu=new ServletFileUpload(factory);//得到解析器
-		
 		sfu.setFileSizeMax(500*1025*1024);//限制单个文件大小为500M，需在parseRequest(request)之前
 		sfu.setSizeMax(500*1025*1024);//限制整个文件大小为500M，需在parseRequest(request)之前
-		
 		try {//解析request，得到FileItem集合
 			List<FileItem> fileItemList= sfu.parseRequest(request);//描述或分析request，查询字符串和请求体中获取参数赋值到paramMap
-			FileItem fi1=fileItemList.get(0);//file
+			FileItem fi1=fileItemList.get(0);//file：视频media_path 
 			
-			FileItem fi2=fileItemList.get(1);
+			FileItem fi2=fileItemList.get(1);//file：图片media_picturepath 
 			System.out.println("fi2.getContentType()="+fi2.getContentType());
 			
-			FileItem fi3=fileItemList.get(2);
-//			FileItem fi4=fileItemList.get(3);
-//			FileItem fi5=fileItemList.get(4);
+			FileItem fi3=fileItemList.get(2);//视频标题：media_name
+			FileItem fi4=fileItemList.get(3);//所属课程：media_type
+//			FileItem fi5=fileItemList.get(4);//
 //			FileItem fi6=fileItemList.get(5);
 			System.out.println("文件表单项演示：");
 			System.out.println("content-type:"+fi1.getContentType());
 			System.out.println("size:"+fi1.getSize());
 			System.out.println("filename(fi1.getName():"+fi1.getName());//getFieldName()返回当前表单项的名称--getName()返回上传的文件名
 			System.out.println("name(fi1.getFieldName():)"+fi1.getFieldName());
-//			System.out.println("普通表单项演示："fi2.getFieldName()+"="+fi2.getString("utf-8"));//？？？？？？？？
-			/////////////////////////////////////////////////////
+			//////////////////////////////////////视频//////////////////////////////////////////////////////////////
 			//1.得到文件保存路径
 			String root = this.getServletContext().getRealPath("/WEB-INF/files");
 			/**
@@ -131,37 +127,74 @@ public class MediaServlet extends HttpServlet {
 				 * 保存
 				 * */
 				fi1.write(destFile);//第一异常
-			/////////////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////////////////
+				//////////////////////////////////////图片//////////////////////////////////////////////////////////////
+				//1.得到文件保存路径
+				/**
+				 * 2.生成二层目录
+				 * 1).得到文件名
+				 * 2).得到hashcode
+				 * 3).转发成16进制
+				 * 4).获取前两个字符用来生成目录
+				 * **/
+					String filename2 = fi2.getName();
+					System.out.println("图片名filename2="+filename2);
+					/**
+					 * 处理文件名的绝对路径问题
+					 **/
+					int index2 = filename2.lastIndexOf("\\");
+					if(index2!=-1){
+						filename2=filename2.substring(index2+1);
+					}
+					/**
+					 *给文件名称添加uuid前缀，处理文件同名问题 
+					 **/
+					String savename2 = media_uploadtime+"_"+filename2;
+					System.out.println("图片名savename2="+savename2);
+						/**
+						 * 得到hashcode
+						 **/
+					int hcode2= filename2.hashCode();
+					String hex2=Integer.toHexString(hcode2);
+					System.out.println("得到hashcode转化的16进制hex="+hex2);
+					/**
+					 * 获取hex的前两个字符，与root链接，生成一个完整的路径
+					 * **/
+					File dirFile2 = new File(root,hex2.charAt(0)+"/"+hex2.charAt(1));
+					System.out.println("图片保存目录dirFile2="+dirFile2);
+					/*
+					 * 创建目录链
+					 * */
+					dirFile2.mkdirs();
+					/*
+					 * 创建目录文件
+					 * */
+					File destFile2=new File(dirFile2,savename2);
+					System.out.println("得到图片path destFile2="+destFile2);
+					/*
+					 * 保存
+					 * */
+					fi2.write(destFile2);//第一异常
+				//////////////////////////////////////////////////////////////////////////////////////////////////
 			/*//保存文件
 			File destFile=new java.io.File("c:/yiyiyi/test.avi");
 			fi1.write(destFile);//选择异常Add catch clause to surrounding try？？？
 			*/
 			
-				String media_path=dirFile.toString();//toString()返回对象的字符串表示
+				String media_path="files/"+hex.charAt(0)+"/"+hex.charAt(1)+savename;//toString()返回对象的字符串表示
 				
-				String media_name=media_uploadtime+fi2.getString();//解决上传文件同名问题，可在name前面加个date()
+				String media_picturepath="files/"+hex2.charAt(0)+"/"+hex2.charAt(1)+savename2;
 				
-				String media_type=fi3.getString();
-				System.out.println("media_type="+fi3.getString());
+				String media_name=media_uploadtime+fi3.getString();//解决上传文件同名问题，可在name前面加个date()
 				
-//				String media_native=fi4.getString();
-//				System.out.println("media_native="+fi4.getString());
-//				
-//				String media_way=fi5.getString();
-//				System.out.println("media_way="+fi5.getString());
-//				
-//				String media_describe=fi5.getString();
-//				System.out.println("media_describe="+fi5.getString());
-//				
+				String media_type=fi4.getString();
+				System.out.println("media_type="+fi4.getString());
 				
 				Media media=new Media();//创建media对象
 				media.setMedia_path(media_path);
+				media.setMedia_picturepath(media_picturepath);
 				media.setMedia_name(media_name);
 				media.setMedia_type(media_type);
-//				media.setmedia_native(media_native);
-//				media.setmedia_way(media_way);
-//				media.setmedia_describe(media_describe);
-//				media.setmedia_uploadtime(media_uploadtime);
 				MediaDaoImpl mediaDaoImpl=new MediaDaoImpl();
 				mediaDaoImpl.savemedia1(media);
 				request.setAttribute("savemediamessage", "上传成功,请完善视频信息");
@@ -174,14 +207,6 @@ public class MediaServlet extends HttpServlet {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 		out.flush();
 		out.close();
 	}

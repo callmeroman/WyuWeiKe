@@ -1,110 +1,80 @@
-<%@page import="com.user.bean.Media"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	System.out.println("调用media_list.jsp");
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>视频列表</title>
-<link rel="stylesheet" type="text/css" href="skin/css/style.css" ></link>
+<base href="<%=basePath%>">
 
-<script type="text/javascript" src="skin/js/jquery1.3.2.js"></script>
-<script type="text/javascript">
-$(function() {
-    var sWidth = $("#focus").width(); //获取焦点图的宽度（显示面积）
-    var len = $("#focus ul li").length; //获取焦点图个数
-    var index = 0;
-    var picTimer;
-    
-    //以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
-    var btn = "<div class='btnBg'></div><div class='btn'>";
-    for(var i=0; i < len; i++) {
-        btn += "<span></span>";
-    }
-    btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
-    $("#focus").append(btn);
-    $("#focus .btnBg").css("opacity",0.5);
+<title>My JSP 'media_list.jsp' starting page</title>
 
-    //为小按钮添加鼠标滑入事件，以显示相应的内容
-    $("#focus .btn span").css("opacity",0.4).mouseenter(function() {
-        index = $("#focus .btn span").index(this);
-        showPics(index);
-    }).eq(0).trigger("mouseenter");
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
 
-    //上一页、下一页按钮透明度处理
-    $("#focus .preNext").css("opacity",0.2).hover(function() {
-        $(this).stop(true,false).animate({"opacity":"0.5"},300);
-    },function() {
-        $(this).stop(true,false).animate({"opacity":"0.2"},300);
-    });
-
-    //上一页按钮
-    $("#focus .pre").click(function() {
-        index -= 1;
-        if(index == -1) {index = len - 1;}
-        showPics(index);
-    });
-
-    //下一页按钮
-    $("#focus .next").click(function() {
-        index += 1;
-        if(index == len) {index = 0;}
-        showPics(index);
-    });
-
-    //本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
-    $("#focus ul").css("width",sWidth * (len));
-    
-    //鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
-    $("#focus").hover(function() {
-        clearInterval(picTimer);
-    },function() {
-        picTimer = setInterval(function() {
-            showPics(index);
-            index++;
-            if(index == len) {index = 0;}
-        },4000); //此4000代表自动播放的间隔，单位：毫秒
-    }).trigger("mouseleave");
-    
-    //显示图片函数，根据接收的index值显示相应的内容
-    function showPics(index) { //普通切换
-        var nowLeft = -index*sWidth; //根据index值计算ul元素的left值
-        $("#focus ul").stop(true,false).animate({"left":nowLeft},300); //通过animate()调整ul元素滚动到计算出的position
-        //$("#focus .btn span").removeClass("on").eq(index).addClass("on"); //为当前的按钮切换到选中的效果
-        $("#focus .btn span").stop(true,false).animate({"opacity":"0.4"},300).eq(index).stop(true,false).animate({"opacity":"1"},300); //为当前的按钮切换到选中的效果
-    }
-});
-
-</script>
 </head>
-
 <body>
-<div class="wrapper">
-    <h1>最新视频</h1>
+	<table width="150"  border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td width="144" height="22" align="left"
+				background="images/nav_lan.jpg">
+				<p>参赛作品展示</p>
+			</td>
+		</tr>
+		<tr>
+		
+<c:forEach var="c" items="${medias}">
+			<td width="186" align="left" valign="middle">
+				<!--视频开始-->
+				<table width="170" border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td colspan="2" align="center" valign="middle" class="vodkuang">
 
-        <div id="focus">
-            <ul>
-                    <%
-                        List<Media> mediaList = (List<Media>)request.getAttribute("mediaList");
-                        if(mediaList.size()>0&&mediaList!=null){
-                            for(int i=0; i<mediaList.size(); i++){
-                                Media media = mediaList.get(i);
-                    %>
-                            <li><a href="play.action?id=<%=media.getId() %>"><img src="<%=basePath%><%= %>" alt="" /></a></li>
-                                <% 
-                            }
-                        }else{
-                    %>
-                        <li><h3 style="color:white;margin-left: 352px;margin-top: 130px;">没有记录</h3></li>
-                    <% 
-                        }
-                     %>
-            </ul>
-        </div>
-                
-</div>
+							<table width="150" height="115" border="0" cellspacing="0"
+								cellpadding="0">
+								<tr>
+									<td style="background-image:url('<%=basePath%>files/test.jpg'); background-size:149px 114px;background-attachment: scroll;background-repeat: no-repeat;background-position: center center;"
+										background="<%=basePath%>files/test.jpg">
+										<a href="media/media_player.jsp?media_path=<%=basePath%>files/test.wmv" title="${c.media_name}">
+										<!--在 background上添加图片-->
+<!-- 										<img src="images/bofang_f.gif" border="0" width="149" height="114" -->
+<!-- 											align="absmiddle" /> -->
+									</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="left" valign="middle">
+							<img src="images/bo.jpg" width="15" height="15" align="absmiddle" />
+							<a href="media/media_player.jsp?media_path=<%=basePath%>files/test.wmv" title="${c.media_name}">${c.media_name}</a>
+						</td>
+					</tr>
+<!-- 					<tr> -->
+<!-- 						<td align="left" valign="middle">院系：合肥通用职业技术学院</td> -->
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td align="left" valign="middle">作者：储亭玉</td> -->
+<!-- 					</tr> -->
+				</table>
+				 <!--视频结束-->
+			</td>
+</c:forEach>
+			
+		</tr>
+	</table>
 </body>
 </html>

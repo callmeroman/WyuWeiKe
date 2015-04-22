@@ -38,7 +38,7 @@ public class MediaMessageUploadServlet extends HttpServlet {
 		/////////////////////////////////////////////////////////
 		//格式化时间
 		Date date=new Date();
-		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日");
+		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日HH时mm分");
 		String media_uploadtime=date1.format(date);
 		/////////////////////////////////////////////////////////	
 		

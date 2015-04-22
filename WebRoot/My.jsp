@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</form>
 	
 	 <center>
-		<c:forEach var="c" items="${user}">
+		<c:forEach var="c" items="${users}">
       <table width="300" border="2" cellpadding="10" cellspacing="1" bgcolor="#E7E7E7" >
 		<tr>
 		<td><strong>教工号：</strong></td>

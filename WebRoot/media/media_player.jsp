@@ -29,7 +29,7 @@
 <body>
 	<center>
 		<%
-			Media media = new Media();
+			String media_path=request.getParameter("media_path");
 		%>
 		<!-- 嵌入Flash播放器 -->
 		<table>
@@ -39,7 +39,7 @@
 						type="application/x-oleobject" height="400" width="600">
 						<!-- <param>元素,value属性指定被加载的视频文件.实例中用的是flash制作的视频播放器.
     				在value属性值中向player.swf播放器传递了一个media_path参数.该参数指定了要播放的视频的路径. -->
-						<param name="url" value="<%=basePath%>files/test.wmv" />
+						<param name="url" value="<%=media_path%>" />
 						<param name="autosize" value="true" />
 						<param name="autostart" value="true" />
 						<param name="AnimationAtStart" value="true" />
@@ -57,7 +57,7 @@
 							type 属性：字符串作用：为嵌入插件指定MIME类型.MIME 是描述消息内容类型的因特网标准。-->
 						<embed filename="test.wmv" autostart="true" showcontrols="true"
 							showstatusbar="true" showtracker="true" uimode="full" autosize="true"
-							src="<%=basePath%>files/test.wmv" type="application/x-mplayer2" height="98%"
+							src="<%=media_path%>" type="application/x-mplayer2" height="98%"
 							width="98%" AnimationAtStart="true"                       ></embed>
 					</object></td>
 			</tr>
