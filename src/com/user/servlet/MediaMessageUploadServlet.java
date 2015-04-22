@@ -1,6 +1,7 @@
 package com.user.servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -34,15 +35,19 @@ public class MediaMessageUploadServlet extends HttpServlet {
 		String  media_native =request.getParameter("media_native");
 		String media_way =request.getParameter("media_way");
 		String  media_describe =request.getParameter("media_describe");
-		String media_uploadtime=new Date().toString();
+		/////////////////////////////////////////////////////////
+		//格式化时间
+		Date date=new Date();
+		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日");
+		String media_uploadtime=date1.format(date);
+		/////////////////////////////////////////////////////////	
 		
-		/*
-		 * 从session中获取对象user，再从对象中获得user_id的值
-		 * */
+		/////////////////////获得user_id的值//////////////////////////
+		//从session中获取对象user，再从对象中获得user_id的值
 		HttpSession session =request.getSession();//user_id保存在session的user对象中
 		User user = (User)session.getAttribute("user");//getAttribute返回为一个对象
 		String user_id=user.getUser_id();//getUser_id()从user对象中获取值
-		
+		/////////////////////////////////////////////////////////
 		System.out.println("media_name="+media_name);
 		System.out.println("media_native="+media_native);
 		System.out.println("media_way="+media_way);

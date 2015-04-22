@@ -3,6 +3,7 @@ package com.user.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -43,6 +44,13 @@ public class MediaServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		/////////////////////////////////////////////////////////
+		//格式化时间
+		Date date=new Date();
+		SimpleDateFormat date1 =new SimpleDateFormat("yyyy年MM月dd日");
+		String media_uploadtime=date1.format(date);
+//		String media_uploadtime = (String)date.//获取当前时间并返回为字符串表示
+		/////////////////////////////////////////////////////////
 		//获得数据体
 		ServletInputStream in=request.getInputStream();
 		//测试，将获得的数据打印成字符串
@@ -99,7 +107,7 @@ public class MediaServlet extends HttpServlet {
 				/**
 				 *给文件名称添加uuid前缀，处理文件同名问题 
 				 **/
-//				String savename = CommonUtils.uuid()+"_"+filename;
+				String savename = media_uploadtime+"_"+filename;
 					/**
 					 * 得到hashcode
 					 **/
@@ -117,7 +125,7 @@ public class MediaServlet extends HttpServlet {
 				/*
 				 * 创建目录文件
 				 * */
-				File destFile=new File(dirFile,filename);
+				File destFile=new File(dirFile,savename);
 				System.out.println("得到文件目录="+destFile);
 				/*
 				 * 保存
@@ -129,11 +137,9 @@ public class MediaServlet extends HttpServlet {
 			fi1.write(destFile);//选择异常Add catch clause to surrounding try？？？
 			*/
 			
-				String media_uploadtime = new Date().toString();//获取当前时间并返回为字符串表示
 				String media_path=dirFile.toString();//toString()返回对象的字符串表示
 				
-				String media_name2=fi2.getString();//解决上传文件同名问题，可在name后面加个date()
-				String media_name=media_name2+media_uploadtime;
+				String media_name=media_uploadtime+fi2.getString();//解决上传文件同名问题，可在name前面加个date()
 				
 				String media_type=fi3.getString();
 				System.out.println("media_type="+fi3.getString());

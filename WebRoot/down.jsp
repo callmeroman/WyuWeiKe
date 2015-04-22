@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </tr>
                         <tr>
                           <td align="right" bgcolor="#FFFFFF">格式工厂：</td>
-                          <td align="left" bgcolor="#FFFFFF"><a href="http://dl.pconline.com.cn/download/51244-1.html"><img src="images/xiazaibuttom.gif" width="96" height="28" border="0" /></a></td>
+                          <td align="left" bgcolor="#FFFFFF"><a href="http://www.pcfreetime.com/CN/index.html"><img src="images/xiazaibuttom.gif" width="96" height="28" border="0" /></a></td>
                         </tr>
                         <tr>
                           <td width="206" align="right" bgcolor="#FFFFFF">视频转码工具：</td>
