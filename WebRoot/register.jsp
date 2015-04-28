@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -64,7 +66,8 @@
 						<td width="901" align="right" valign="bottom">&nbsp;</td>
 					</tr>
 				</table>
-			<form id="form1" name="form1" method="post" action="<%=path %>/register" >
+			<form id="form1" name="form1" method="post" action="<c:url value='/userservlet' />" >
+			<input type="hidden" name="method" value="addUser" >
 				<table width="990" border="0" cellpadding="0" cellspacing="1"
 					bgcolor="#E7E7E7">
 						<tr>
@@ -135,10 +138,26 @@
 													</td>
 												</tr>
 												<tr>
-													<td align="left"><span class="error_div">*</span>院系：</td><td><input
-														name="user_academy" type="text" id="user_academy" size="20"
-														maxlength="15" />
-														<div id="user_academy_error"></div></td>
+													<td align="left"><span class="error_div">*</span>院系：</td><td>
+													<select name="user_academy" id="user_academy" >
+													<option value="计算机学院" >计算机学院 </option>
+													<option value="文学院" >文学院</option>
+													<option value="政法学院" > 政法学院 </option>
+													<option value="艺术设计学院" >艺术设计学院</option>
+													<option value="土木建筑学院" > 土木建筑学院 </option>
+													<option value="经济管理学院" >经济管理学院</option>
+													<option value="外国语学院 " > 外国语学院 </option>
+													<option value="数学与计算科学学院" >数学与计算科学学院</option>
+													<option value="应用物理与材料学院" >应用物理与材料学院</option>
+													<option value="信息工程学院" >信息工程学院</option>
+													<option value="机电工程学院" >机电工程学院</option>
+													<option value="化学与环境工程学院" >化学与环境工程学院</option>
+													<option value="纺织服装学院" >纺织服装学院</option>
+													<option value="轨道交通学院" >轨道交通学院</option>
+													<option value="体育部" >体育部</option>
+													<option value="思想政治理论教学部" >思想政治理论教学部</option>
+													</select>
+													</td>
 												</tr>
 												
 												<tr>
@@ -205,10 +224,10 @@
 								</td>
 						</tr>
 				</table>
+					</form>
 			</td>
 		</tr>
 	</table>
-					</form>
 </center>
 
 

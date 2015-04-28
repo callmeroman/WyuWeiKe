@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -54,7 +54,8 @@ function getusermessage(){
 			<td width="154" align="center" valign="middle" class="leftkuang">
 				<div style="line-height: 20px">
 				<!-- --------------------------------------------- -->
-				<p><font class="error_div">&nbsp;&nbsp;${sessionScope.user.user_name} </font>，欢迎您</p>
+				&nbsp;&nbsp;<a href="<%=basePath%>login.jsp" target="_top"><c:out value="${sessionScope.user.user_name}" default="请登录" /></a>，欢迎您
+				</br></br>
 				<!-- --------------------------------------------- -->
 				<!-- showuser;JSESSIONID=<%=session.getId()%>向服务器提交session中的数据 -->
 				<!-- response.encodeURL("showuser")向所有包含该路径传值 -->

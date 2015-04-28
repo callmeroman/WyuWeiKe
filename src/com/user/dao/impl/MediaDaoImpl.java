@@ -56,45 +56,7 @@ return false;
 }
 
 	public List<Media> getmediaByUser_id(String user_id) {
-//		// (1)获取连接
-//		Connection conn = JdbcUtil.getConn();
-//		// (2)声明相关对象
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		// (3)编写SQL
-//		String sql = "select * from media where user_id='"+user_id+"';";
-//		int result = 0;
-//		Media media = null;
-//		try {
-//			ps = conn.prepareStatement(sql);
-////			ps.setInt(1,id);
-//
-//			rs = ps.executeQuery();
-//			
-//			while(rs.next()){
-//				media =new Media();
-//				media.setId(rs.getInt(1));
-//				media.setMedia_name(rs.getString(2));
-//				media.setMedia_type(rs.getString(3));
-//				media.setMedia_native(rs.getString(4));
-//				media.setMedia_way(rs.getString(5));
-//				media.setMedia_describe(rs.getString(6));
-//				media.setMedia_path(rs.getString(7));
-//				media.setMedia_picturepath(rs.getString(8));
-//				media.setMedia_playfrequency(rs.getInt(9));
-//				media.setMedia_sharefrequency(rs.getInt(10));
-//				media.setMedia_polls(rs.getInt(11));
-//				media.setMedia_uploadtime(rs.getString(12));
-//				media.setUser_id(rs.getString(13));
-//				
-//			}
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			JdbcUtil.close(rs,ps, conn);
-//		}
-//		return media;
+		
 		String sql = "select * from media where user_id='"+user_id+"';";
 		try {
 			return qr.query(sql, new BeanListHandler<Media>(Media.class));

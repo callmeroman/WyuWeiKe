@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
 //		request.setAttribute(user_qq, user_qq);
 //		request.setAttribute(user_email, user_email);
 		
-		userDaoImpl.saveuser(user);
+		userDaoImpl.addUser(user);
 		response.sendRedirect("/WyuWeiKe/user/mycourse.jsp");
 		//request.getRequestDispatcher("/login.jsp").forward(request, response);
 	

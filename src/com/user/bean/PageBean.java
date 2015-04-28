@@ -3,14 +3,13 @@ package com.user.bean;
 import java.util.List;
 
 public class PageBean<T> {
-	private int pc;// 当前页码page code
-	private int tp;// 总页数total page,由计算得来。故可注释，直接写getTp()方法
-	private int tr;// 总记录数total record
-	private int ps;// 每页记录数page size
-	private List<T> beanList;// 当前页的记录
-	public PageBean() {
-		super();
-	}
+	private int pc;// 当前页码page code；									（servlet负责，以页面传值为准，否则为1）
+	private int tp;// 总页数total page,由计算得来。故可注释，直接写getTp()方法；	（dao负责，使用select count（*））
+	private int tr;// 总记录数total record								（servlet负责，直接指定）
+	private int ps;// 每页记录数page size									（servlet负责，直接指定）
+	private List<T> beanList;// 当前页的记录								（dao负责，使用limitx，y）
+	private String url;//就是url后的条件									（servlet负责，）
+	
 	public PageBean(int pc, int tp, int tr, int ps, List<T> beanList) {
 		super();
 		this.pc = pc;
@@ -18,6 +17,15 @@ public class PageBean<T> {
 		this.tr = tr;
 		this.ps = ps;
 		this.beanList = beanList;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public PageBean() {
+		super();
 	}
 	public int getPc() {
 		return pc;
