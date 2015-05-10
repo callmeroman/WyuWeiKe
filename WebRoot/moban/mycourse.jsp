@@ -1,4 +1,4 @@
-<%@page import="com.user.dao.impl.UserDaoImpl"%>
+<%@page import="com.user.UserDaoImpl"%>
 <%@ page language="java" import="java.util.*,java.sql.*,com.user.util.JdbcUtil" pageEncoding="utf-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%

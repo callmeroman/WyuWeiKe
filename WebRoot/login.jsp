@@ -36,14 +36,15 @@
 	<!-- ------------------------登录失败提示--------------------------- -->
 	<%
 	String message="";//赋值为空，第一次打开页面无显示，否则显示null；
-	String msg=(String)request.getAttribute("errormessage");
+	String msg=(String)request.getAttribute("message");
 	if(msg!=null){
 	message=msg;
 	}
 	 %>
 <font color="red"><b><%=message %></b></font>
 <!-- --------------------------------------------------------------- -->
-	<form  id="form1" name="form1" method="post" action="login">
+	<form id="form" name="form" method="post" action="login"> 
+<!-- 	<input type="hidden" name="method" value="login" /> -->
 		<table width="580" border="0" cellpadding="0" cellspacing="3"
 						bgcolor="#139DC1">
 			<tr>

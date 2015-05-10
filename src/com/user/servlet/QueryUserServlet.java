@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.itcast.commons.CommonUtils;
-import cn.itcast.cstm.domain.Customer;
-import cn.itcast.cstm.service.CustomerService;
 
 import com.user.bean.PageBean;
 import com.user.bean.User;
@@ -45,7 +43,7 @@ public class QueryUserServlet extends HttpServlet {
 		 * 3.使用pc和ps调用service方法。得到PageBean，保存到request域
 		 * 4. 转发到对应的list.jsp
 		 */
-		User criteria = userDao.toBean(request.getParameterMap(), User.class);
+		User criteria = CommonUtils.toBean(request.getParameterMap(), User.class);
 		
 		int pc=getPc(request);
 		int ps=10;

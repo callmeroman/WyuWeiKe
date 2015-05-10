@@ -54,17 +54,17 @@ function getusermessage(){
 			<td width="154" align="center" valign="middle" class="leftkuang">
 				<div style="line-height: 20px">
 				<!-- --------------------------------------------- -->
-				&nbsp;&nbsp;<a href="<%=basePath%>login.jsp" target="_top"><c:out value="${sessionScope.user.user_name}" default="请登录" /></a>，欢迎您
+<!-- 				&nbsp;&nbsp;<a href="<%=basePath%>login.jsp" target="_top"><c:out value="${sessionScope.user.user_name}" default="请登录" /></a>，欢迎您 -->
 				</br></br>
 				<!-- --------------------------------------------- -->
 				<!-- showuser;JSESSIONID=<%=session.getId()%>向服务器提交session中的数据 -->
 				<!-- response.encodeURL("showuser")向所有包含该路径传值 -->
-					<a href="showuser?user_id=${sessionScope.user.user_id}" class="red" target="main"><strong>个人信息</strong></a></br></br> 
+					<a href="userservlet?method=showUser&&user_id=${sessionScope.user.user_id}" class="red" target="main"><strong>个人信息</strong></a></br></br> 
 					<a href="showusermedia?user_id=${sessionScope.user.user_id}" class="blue" target="main">我的作品</a></br> </br>
 					<a href="media/media_upload.jsp" class="blue" target="main">马上上传</a></br> </br>
 					<a href="user/changepassword.jsp" class="blue" target="main">修改密码</a></br> </br>
 					<a href="exit.jsp" class="blue"  target="main" onclick="">退出登录</a></br> </br>
-					<a href="help.jsp" class="blue" >帮助</a></br></br>
+					<a href="help.jsp" class="blue" target="_top">帮助</a></br></br>
 				</div>
 			</td>
 		</tr>

@@ -35,27 +35,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td width="181" bgcolor="#FFFFFF"><img src="images/cs.jpg" width="181" height="48" /></td>
         </tr>
         <tr>
-          <td height="358" align="center" valign="top" bgcolor="#F4FCFF"><table width="154" border="0" cellpadding="0" cellspacing="0">
+          <td height="358" align="center" valign="top" bgcolor="#F4FCFF">
+          <table width="154" border="0" cellpadding="10" cellspacing="0">
             <tr>
               <td align="center" valign="middle">&nbsp;</td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai.jsp" class="red"><strong>比赛方案</strong></a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai.jsp" class="blue"><font size="5px">比赛方案</font></a></td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_guize.jsp" class="blue">评审规则</a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_guize.jsp" class="blue"><font size="5px">评审规则</font></a></td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_zuoping.jsp" class="blue">作品要求</a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_zuoping.jsp" class="blue"><font size="5px">作品要求</font></a></td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_video.jsp" class="blue">视频要求</a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_video.jsp" class="blue"><font size="5px">视频要求</font></a></td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_upload.jsp" class="blue">上传说明</a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="bisai_upload.jsp" class="blue"><font size="5px">上传说明</font></a></td>
             </tr>
             <tr>
-              <td width="154" align="center" valign="middle" class="leftkuang"><a href="help.jsp" class="blue">常见问题</a></td>
+              <td width="154" align="center" valign="middle" class="leftkuang"><a href="help.jsp" class="blue"><font size="5px">常见问题</font></a></td>
             </tr>
           </table>
         </tr>

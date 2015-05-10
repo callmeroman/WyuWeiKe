@@ -28,14 +28,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <center>
 <jsp:include page="top.jsp"></jsp:include> 
 <table width="990" border="0" cellspacing="0" cellpadding="0">
     <tr>
-      <td width="183" height="121" align="left" valign="top">
+      <td width="183" height="121"  valign="top">
       <jsp:include page="bisai_middle.jsp"></jsp:include>
       </td>
       <td width="10">&nbsp;</td>
-      <td width="797" align="left" valign="top"><table width="797" border="0" cellpadding="0" cellspacing="1" bgcolor="#E7E7E7">
+      <td width="797"  valign="top"><table width="797" border="0" cellpadding="0" cellspacing="1" bgcolor="#E7E7E7">
         <tr>
           <td width="797" height="29" background="images/nav_lan.jpg">&nbsp;<span class="bigwritetitle">比赛方案</span></td>
         </tr>
@@ -44,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td height="51" align="center" valign="middle" bgcolor="#FFFFFF" class="bigredtitle">五邑大学微课教学比赛方案</td>
         </tr>
         <tr>
-          <td height="51" align="left" valign="middle" bgcolor="#FFFFFF" class="BBS_content">　　<span class="bigredtitle">一、组织机构</span><br />
+          <td height="51"  valign="middle" bgcolor="#FFFFFF" class="BBS_content">　　<span class="bigredtitle">一、组织机构</span><br />
             <br />
             　　
             主办单位：五邑大学教师教学发展中心<br />
@@ -147,5 +148,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
    
 <jsp:include page="bottom.jsp"></jsp:include>
+</center>
   </body>
 </html>

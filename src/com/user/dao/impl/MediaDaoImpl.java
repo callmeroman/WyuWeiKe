@@ -9,8 +9,10 @@ import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.user.bean.Media;
+import com.user.bean.PageBean;
 import com.user.bean.User;
 import com.user.dao.IMediaDao;
 import com.user.util.DBCPUtil;
@@ -195,6 +197,41 @@ return false;
 		}
 
 return false;
+	}
+
+	public PageBean<Media> findALlMedia(int pc, int ps){
+		try {
+//			String sql="select * from media";
+//			return qr.query(sql, new BeanListHandler<media>(media.class));
+			/*pb=pagebean;  pc=当前页;  ps=每页记录数；   tr=总记录数；  tp=总页数
+			 * 1.创建PageBean对象pb
+			 * 2.设置pb的pc和ps
+			 * 3.得到tr，设置给pb
+			 * 4.得到beanlist，设置给pb
+			 * 5.返回pb
+			 */
+			PageBean<Media>pb=new PageBean<Media>();//1
+			pb.setPc(pc);//2
+			pb.setPs(ps);
+			/*
+			 * 3.得到tr
+			 */
+			String sql="select count(*) from media";
+			//ScalarHandler：将结果集中某一条记录(行)的其中某一列的数据存成 Object
+			Number number=(Number)qr.query(sql, new ScalarHandler());
+			//intValue()是java.lang.Number类的方法,将integer对象转换成int，输出int数据。
+			int tr=number.intValue();
+			pb.setTr(tr);
+			/*
+			 * 4.得到beanList
+			 */
+			sql="select * from media order by id limit ?,?";
+			List<Media>beanList=qr.query(sql, new BeanListHandler<Media>(Media.class),(pc-1)*ps,ps);
+			pb.setBeanList(beanList);
+			return pb;//5
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 

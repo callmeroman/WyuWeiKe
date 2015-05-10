@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -76,8 +77,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td width="3" align="center"><img src="images/nav_shu.jpg"
 								width="3" height="40" /></td>
 							<td width="135" align="center" class="writefont12">
-								<a id="hidden" href="register.jsp" class="white" target="_top">注册</a> |
-								<a id="hidden" href="login.jsp" class="white" target="_top">登录</a>
+								<c:choose>
+									<c:when test="${sessionScope.user.user_id ne null }">
+										<a href="<%=basePath%>user/mycourse.jsp" target="_top"><font color="red" size="5px "><c:out value="${sessionScope.user.user_name}"/></font></a>，欢迎您
+									</c:when>
+									<c:otherwise>
+										<a id="hidden" href="register.jsp" class="white" target="_top">注册</a> |
+										<a id="hidden" href="login.jsp" class="white" target="_top">登录</a>
+									</c:otherwise>
+								</c:choose>
+							
 							</td>
 							<td width="3" align="center"><img src="images/nav_shu.jpg"
 								width="3" height="40" /></td>

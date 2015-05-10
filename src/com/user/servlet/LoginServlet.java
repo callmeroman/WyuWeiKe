@@ -88,17 +88,21 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("user", user);
 //				request.getSession().setAttribute("user", user);
 				//重定向,session保存在客户端中，故无需转发request数据。
-				response.sendRedirect("/WyuWeiKe/user/mycourse.jsp");
+				System.out.println("恭喜，登录成功");
+				request.setAttribute("message","恭喜，登录成功");
+				request.getRequestDispatcher("/user/mycourse.jsp").forward(request, response);
 			}else{//登录失败
 				//保存错误信息在request中
 //				//重定向
 //				response.sendRedirect("/WyuWeiKe/login.jsp");
 				//请求转发.登录失败信息保存在request中，故采用请求转发。
-				request.setAttribute("errormessage", "密码错误！");
+				System.out.println("密码错误！");
+				request.setAttribute("message", "密码错误！");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 		}else{
-			request.setAttribute("errormessage", "请输入用户名和密码！");
+			System.out.println("请输入用户名和密码！");
+			request.setAttribute("message", "请输入用户名和密码！");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		}
 		

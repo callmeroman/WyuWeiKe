@@ -16,7 +16,9 @@ public interface IUserDao {
 	
 	public boolean upUserByid(User user);//更新用户信息
 	
-	public PageBean<User> getAllUser(int pc,int ps);//分页查询技术
+	public boolean deleteUserByid(User user);//删除用户信息
+	
+	public PageBean<User> findAllUser(int pc,int ps);//分页查询技术
 	
 	public User findUserByUser_idAndPassword(String user_id,String user_password);
 	

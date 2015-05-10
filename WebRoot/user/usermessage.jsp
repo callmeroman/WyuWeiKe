@@ -1,7 +1,9 @@
+<%@page import="com.user.bean.User"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -56,7 +58,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 	</table>
 </form>
-      <label><a href="user/updateusermessage.jsp" class="blue" target="main">修改信息</a></label>
+      <label><a href="userservlet?method=preEdit&user_id=${sessionScope.user.user_id}" class="blue" target="main">修改信息</a></label>
       </center>
   </body>
+  <%
+ 	//声明局部变量
+ 	String messageUpdate = (String) request.getAttribute("messageUpdate");
+ 	//编写代码
+
+ 	if (messageUpdate != null) {
+ 		if (messageUpdate.equals("success")) {
+ %> 
+ <script type="text/javascript" defer="defer">
+		alert("恭喜，信息更新成功！");
+	</script> 
+<%
+ 	}
+ 	}
+ %>
+ 
+ 
 </html>

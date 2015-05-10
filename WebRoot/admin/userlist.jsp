@@ -1,3 +1,4 @@
+<%@page import="javax.crypto.interfaces.PBEKey"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -5,6 +6,7 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	System.out.println("调用userlist，取出pb="+request.getAttribute("pb"));
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,7 +14,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'My.jsp' starting page</title>
+<title>My JSP 'userlist.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -23,20 +25,13 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+
+
 </head>
-
 <body>
-	<form method="post" action="<%=basePath%>login">
-		<label>用户名：</label> <label><input name="user_id" type="text"
-			id="user_id" />
-		</label> <label>密码：</label> <label><input name="user_password"
-			type="password" id="user_password" />
-		</label> <label><input type="submit" class="bluebuttom" value="登  录" />
-		</label>
-	</form>
-
+	<center>
 	<%--要遍历PageBean的beanList集合 --%>
-	<table width="300" border="2" cellpadding="10" cellspacing="1"
+	<table width="90%" border="2" cellpadding="5" cellspacing="1"
 		bgcolor="#E7E7E7">
 		<tr>
 			<th><strong>教工号</strong>
@@ -75,9 +70,9 @@
 				</td>
 				<td><strong>${c.user_email}</strong>
 				</td>
-				<td><a
-					href="<c:url value='/userservlet?method=editUser&user_id=${c.user_id}'/>">编辑</a>
-					<a href="<c:url value='/msg.jsp'/>">删除</a></td>
+				<td><a target="main"
+					href="<c:url value='userservlet?method=preEdit&&user_id=${c.user_id}'/>">编辑</a>
+					<a href="<c:url value='userservlet?method=deleteUser&&user_id=${c.user_id}'/>">删除</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -85,19 +80,16 @@
 	<%-- 
 给出分页相差的链接
  --%>
-	<center>
 		第${pb.pc }页/共${pb.tp }页 <a href="${pb.url }&pc=1">首页</a>
 		<c:if test="${pb.pc > 1 }">
 			<a href="${pb.url }&pc=${pb.pc-1}">上一页</a>
 		</c:if>
-		<!-- ------------------------------------------------------------------------- -->
+
 		<%-- 计算begin、end --%>
-		<!-- 完成复杂的条件判断 <c:choose>=父标签,<c:when>=if,<c:otherwise>=else -->
 		<c:choose>
 			<%-- 如果总页数不足10页，那么把所有的页数都显示出来！ --%>
 			<c:when test="${pb.tp <= 10 }">
 				<c:set var="begin" value="1" />
-				<!-- 在scope范围内定义个变量begin，赋值为1 -->
 				<c:set var="end" value="${pb.tp }" />
 			</c:when>
 			<c:otherwise>
@@ -116,18 +108,19 @@
 				</c:if>
 			</c:otherwise>
 		</c:choose>
-		<%-- 循环遍历页码列表，转换为超链接 --%>
+		<%-- 循环遍历页码列表 --%>
 		<c:forEach var="i" begin="${begin }" end="${end }">
 			<c:choose>
 				<c:when test="${i eq pb.pc }">
-				[${i }]
-			</c:when>
+			[${i }]
+		</c:when>
 				<c:otherwise>
 					<a href="${pb.url }&pc=${i}">[${i }]</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<!-- ------------------------------------------------------------------------- -->
+
+
 		<c:if test="${pb.pc < pb.tp }">
 			<a href="${pb.url }&pc=${pb.pc+1}">下一页</a>
 		</c:if>

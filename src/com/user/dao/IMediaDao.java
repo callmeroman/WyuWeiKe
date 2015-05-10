@@ -3,6 +3,7 @@ package com.user.dao;
 import java.util.List;
 
 import com.user.bean.Media;
+import com.user.bean.PageBean;
 
 public interface IMediaDao {
 	
@@ -10,6 +11,13 @@ public interface IMediaDao {
 	public boolean savemediamessage(Media media,String media_name);//完善视频信息
 	public List<Media> getmediaByUser_id(String user_id);//输出登录用户本人所有media
 	public Media upmediaByid();
+	/**
+	 * 带分页的查询
+	 * @param firstResult
+	 * @param maxResult
+	 * @return
+	 */
+	public PageBean<Media> findALlMedia(int pc, int ps);
 	    /**
 	     * 视频转码
 	     * @param ffmpegPath    转码工具的存放路径
@@ -36,13 +44,6 @@ public interface IMediaDao {
 	     */
 	    public int getAllmediaCount()throws Exception;
 	    
-	    /**
-	     * 带分页的查询
-	     * @param firstResult
-	     * @param maxResult
-	     * @return
-	     */
-	    public List<Media> queryALlmedia(int firstResult, int maxResult)throws Exception;
 	    
 	    /**
 	     * 根据user_id查询视频

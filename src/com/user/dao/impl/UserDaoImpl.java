@@ -92,7 +92,11 @@ public class UserDaoImpl implements IUserDao {
 //				return user;
 //		
 //	}
-
+	/*
+	 * 更新用户信息
+	 * (non-Javadoc)
+	 * @see com.user.dao.IUserDao#upUserByid(com.user.bean.User)
+	 */
 
 	public boolean upUserByid(User user) {
 		String sql="update myuser set user_password=?,user_name=?,user_sex=?,user_academy=?,user_phone=?,user_qq=?,user_email=? where user_id=?";
@@ -106,44 +110,21 @@ public class UserDaoImpl implements IUserDao {
 	}
 	
 	/*
-	 * 查询所有
-	 * @see com.user.dao.IUserDao#getAllUser(int, int)
+	 * 删除用户
 	 */
-
-	public PageBean<User> getAllUser(int pc,int ps) {
+	public boolean deleteUserByid(User user) {
+		String sql="delete from myuser where user_id=?";
 		try {
-//			String sql="select * from myuser";
-//			return qr.query(sql, new BeanListHandler<User>(User.class));
-			/*pb=pagebean;  pc=当前页;  ps=每页记录数；   tr=总记录数；  tp=总页数
-			 * 1.创建PageBean对象pb
-			 * 2.设置pb的pc和ps
-			 * 3.得到tr，设置给pb
-			 * 4.得到beanlist设置给pb
-			 * 5.返回pb
-			 */
-			PageBean<User>pb=new PageBean<User>();//1
-			pb.setPc(pc);//2
-			pb.setPs(ps);
-			/*
-			 * 3.得到tr
-			 */
-			String sql="select count(*) from myuser";
-			//ScalarHandler：将结果集中某一条记录(行)的其中某一列的数据存成 Object
-			Number number=(Number)qr.query(sql, new ScalarHandler());
-			//intValue()是java.lang.Number类的方法,将integer对象转换成int，输出int数据。
-			int tr=number.intValue();
-			pb.setTr(tr);
-			/*
-			 * 4.得到beanList
-			 */
-			sql="select * from myuser order by user_id limit ?,?";
-			List<User>beanList=qr.query(sql, new BeanListHandler<User>(User.class),(pc-1)*ps,ps);
-			pb.setBeanList(beanList);
-			return pb;//5
+			int i=qr.update(sql, new ScalarHandler());
+			return i>0;
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
+
 
 
 	public User findUserByUser_idAndPassword(String user_id,String user_password) {
@@ -175,6 +156,46 @@ public class UserDaoImpl implements IUserDao {
 	}
 	
 	/*
+	 * 查询所有
+	 * @see com.user.dao.IUserDao#getAllUser(int, int)
+	 */
+
+	public PageBean<User> findAllUser(int pc,int ps) {
+		try {
+//			String sql="select * from myuser";
+//			return qr.query(sql, new BeanListHandler<User>(User.class));
+			/*pb=pagebean;  pc=当前页;  ps=每页记录数；   tr=总记录数；  tp=总页数
+			 * 1.创建PageBean对象pb
+			 * 2.设置pb的pc和ps
+			 * 3.得到tr，设置给pb
+			 * 4.得到beanlist，设置给pb
+			 * 5.返回pb
+			 */
+			PageBean<User>pb=new PageBean<User>();//1
+			pb.setPc(pc);//2
+			pb.setPs(ps);
+			/*
+			 * 3.得到tr
+			 */
+			String sql="select count(*) from myuser";
+			//ScalarHandler：将结果集中某一条记录(行)的其中某一列的数据存成 Object
+			Number number=(Number)qr.query(sql, new ScalarHandler());
+			//intValue()是java.lang.Number类的方法,将integer对象转换成int，输出int数据。
+			int tr=number.intValue();
+			pb.setTr(tr);
+			/*
+			 * 4.得到beanList
+			 */
+			sql="select * from myuser order by user_id limit ?,?";
+			List<User>beanList=qr.query(sql, new BeanListHandler<User>(User.class),(pc-1)*ps,ps);
+			pb.setBeanList(beanList);
+			return pb;//5
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	/*
 	 *多条件组合分页查询用户数据 
 	 */
 	public PageBean<User> queryUser(User criteria,int pc,int ps) {
@@ -190,7 +211,6 @@ public class UserDaoImpl implements IUserDao {
 		PageBean<User> pb=new PageBean<User>();
 		pb.setPc(pc);
 		pb.setPs(ps);
-		
 		/*
 		 * 得到tr，拼凑sql语句
 		 */
@@ -198,7 +218,7 @@ public class UserDaoImpl implements IUserDao {
 		 * 1.给出一个sql语句的前半部
 		 * */
 		StringBuilder cntSql=new StringBuilder("select count(*) from myuser");
-		StringBuilder whereSql = new StringBuilder(" where 1=1");
+		StringBuilder whereSql = new StringBuilder(" where 1=1");//以一个废条件where 1=1保证where的存在
 		/*
 		 * 2.判断条件，完成向sql语句追加where子句
 		 * */
@@ -210,7 +230,7 @@ public class UserDaoImpl implements IUserDao {
 		String user_id=criteria.getUser_id();
 		if(user_id != null && !user_id.trim().isEmpty()) {
 			whereSql.append(" and user_id like ?");
-			params.add("%" + user_id + "%");
+			params.add("%" + user_id + "%");//往ArrayList中装载参数；模糊查询前后加%
 		}
 		String user_name=criteria.getUser_name();
 		if(user_name != null && !user_name.trim().isEmpty()) {
